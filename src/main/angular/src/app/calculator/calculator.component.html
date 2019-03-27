@@ -1,0 +1,57 @@
+<div id="calcuator">
+  <h1 class="header">Try out your calculator!</h1>
+  <form (ngSubmit)="onSubmit()" [formGroup]="calculatorForm">
+    <div class="form-group">
+      <label for="firstNumber">First Number *</label><br>
+      <input class="form-control" id="firstNumber" formControlName="firstNumber"
+             (blur)="checkIfNotEmptyFirstNumber(); checkFormatFirstNumber();checkSpacesFirstNumber()">
+      <div [hidden]="isNoEmptyFirstNumber" style="color: red">
+        <h6>Field cannot be empty</h6>
+      </div>
+      <div [hidden]="hasGoodFormatFirstNumber" style="color: red">
+        <h6>You can insert only numeric values</h6>
+      </div>
+      <div [hidden]="!hasSpacesFirstNumber" style="color: red">
+        <h6>Inpunt cannot contain spaces</h6>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="action">Action *</label><br>
+      <select id="action" formControlName="action">
+        <option selected="selected" disabled hidden>+</option>
+        <option value="add">+</option>
+        <option value="subtract">-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <div class="ItemSecondNumber">
+        <label for="secondNumber">Second Number *</label><br>
+        <input class="form-control" id="secondNumber" formControlName="secondNumber"
+               (blur)="checkIfNotEmptySecondNumber(); checkFormatSecondNumber(); checkDivisionByZero();checkSpacesSecondNumber()">
+      </div>
+      <div [hidden]="isNoEmptySecondNumber"
+           style="color: red">
+        <h6>Field cannot be empty</h6>
+      </div>
+      <div [hidden]="hasGoodFormatSecondNumber" style="color: red">
+        <h6>You can insert only numeric values</h6>
+      </div>
+      <div [hidden]="!divisionByZero" style="color: red">
+        <h6>Division by zero is not allowed</h6>
+      </div>
+      <div [hidden]="!hasSpacesSecondNumber" style="color: red">
+        <h6>Inpunt cannot contain spaces</h6>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!calculatorForm.valid || divisionByZero">Calculate</button>
+  </form>
+  <div class="result-div">
+    <label for="result">Result</label><br>
+    <input  class="form-control" id="result" disabled="disabled" [(ngModel)]="result">
+  </div>
+
+</div>
+
+

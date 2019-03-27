@@ -1,0 +1,33 @@
+#calcuator {
+  background: blueviolet;
+  height: 100vh;
+}
+
+.header {
+  text-align: center;
+  color: red;
+}
+
+
+input {
+  width: 90px;
+  background: aqua;
+}
+
+#result {
+  width: 120px;
+  background: chartreuse;
+}
+
+.result-div {
+  padding: 20px;
+}
+
+select {
+  width: 35px;
+  background: aqua;
+}
+
+form {
+  padding: 20px;
+}
